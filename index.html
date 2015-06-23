@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="js/video-js/video-js.css">
+	<link rel="stylesheet" href="css/video.css">
+	<script type="text/javascript" src="http://r.sascdn.com/video/config.js?nwid=92>"></script>
+    <script type="text/javascript" src="http://r.sascdn.com/video/controller.js?nwid=92"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div id="my_video1" class="video"></div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div id="my_video2" class="video"></div>
+			</div>
+			<div class="col-md-6">
+				<div id="my_video3" class="video"></div>
+			</div>
+		</div>	
+	</div>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<script type="text/javascript" src="js/video-js/video.js"></script>
+	<script type="text/javascript" src="js/demoPlugin.js"></script>
+	<script>
+		$(function(){
+			$('.video').each(function(){
+				new i3Player( this, {}, function(){
+					console.log(this);
+				});
+			});
+		});
+
+		function i3Player( elem, params, callback ){
+			var template = _.template( $('#video-template').html() );
+			var $videoContainer = $(elem);
+			var itemId = $videoContainer.attr('id');
+			$videoContainer.html( template({'id':itemId+'_vid'}) );
+			var player = videojs(itemId+'_vid',params,callback);
+			player.demoPlugin({ exampleOption: true });
+			return player;
+		}
+	</script>
+
+	<script type="text/template" id="video-template">
+	<video id="<%= id %>" class="video-js vjs-default-skin vjs-big-play-centered" width="100%" data-setup='{ "controls": true, "autoplay": false, "preload": "auto", "poster":"http://video-js.zencoder.com/oceans-clip.png" }'> 
+			<source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+			<source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+			<source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+			<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+		</video>
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,5 @@
+.video > div[id*="_vid"] {
+    width: 100%;   
+    height: auto;   
+    padding-top: 41.75%;
+}
