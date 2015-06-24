@@ -1,4 +1,4 @@
-/*! demoPlugin - v0.0.0 - 2015-6-23
+/*! adplugin - v0.0.0 - 2015-6-23
  * Copyright (c) 2015 cuerposaco
  * Licensed under the Apache-2.0 license. */
 (function(window, videojs) {
@@ -7,13 +7,13 @@
   var defaults = {
         option: true
       },
-      demoPlugin;
+      adplugin;
 
   /**
    * Initialize the plugin.
    * @param options (optional) {object} configuration for the plugin
    */
-  demoPlugin = function(options) {
+  adplugin = function(options) {
     var settings = videojs.util.mergeOptions(defaults, options);
     var player = this;
 
@@ -49,5 +49,5 @@
   }
 
   // register the plugin
-  videojs.plugin('demoPlugin', demoPlugin);
+  videojs.plugin('adplugin', adplugin);
 })(window, window.videojs);
